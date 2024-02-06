@@ -1,0 +1,26 @@
+@media(max-width: 640px){
+
+    .headerTextAndInput{
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+
+    .pokemonDataCard{
+        padding-top: 12px;
+        width: 100%;
+    }
+
+    .dataCardTop{
+        padding: 16px 8px 0px 8px;
+    }
+    
+    .dataCardBottom{
+        padding: 32px 8px;
+        width: 100%;
+    }
+
+    .dataCardBottomContent{
+        width: 95%;
+    }
+}

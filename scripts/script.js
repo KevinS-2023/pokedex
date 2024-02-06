@@ -8,6 +8,11 @@ let showlikes = false;
 let pokemonData = [];
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('headerInput').addEventListener('input', searchPokemon);
+    init();
+})
+
 async function init(){
     
     showLoadingSpinner(true);
@@ -21,11 +26,6 @@ async function init(){
         generatePokemonCardTypes(i);
     }
     showLoadingSpinner(false);
-
-   
-        
-    addEventToElement('headerInput');
-    addEventToElement('headerInputMobile');
 }
 
 async function getPokemonFromApi(index){
@@ -62,7 +62,6 @@ function capitalizeFirstLetter(string) {
 }
 
 function returnPokemonId(number){
-
     if(number < 10){
         return `#00${number}`;
     }
@@ -165,7 +164,6 @@ function emptyContentContainer(){
    }
 
 // load more Pokemon -----------------------------------------------------------------------------
-
 async function loadmorePokemon(){
     if (loadTo < 153){
         document.getElementById("buttonLoadMore").disabled = "true";
@@ -186,9 +184,7 @@ async function loadmorePokemon(){
     loadTo += 30;
    }
 
-
 // Like ----------------------------------------------------------------------------------------
-
 function showLikesOnly(){
     getLocalStoreg();
     emptyContentContainer();
@@ -254,46 +250,21 @@ function showLoadingSpinner(trueFalse){
 
 // Input Search
 
-async function showSearchHitsOnly(element){
+function searchPokemon(){
+    let input = document.getElementById('headerInput').value.toLowerCase();
     
-    showLoadingSpinner(true);
-    let input =  document.getElementById(element).value;
-    input = input.toLowerCase();
-    let names;
-    document.getElementById("contentContainer").innerHTML = "";
-
-    if(input != ""){
-
         for(let i = 0; i < pokemon.length; i++){
-            names = pokemon[i]['name'];
-            names = names.toLowerCase();
-            
-            
-            let id = returnPokemonId(pokemon[i][`id`]);
-            id.toString();
-                
-            if(names.includes(input) == false && id.includes(input) == false){
-                pokemon.splice(i, 1);
-                i--;
-            }  
-        }
+            let name = pokemon[i]['name'].toLowerCase();
+            let id = pokemon[i]['id'].toString();
 
-        for(let i = 0; i < pokemon.length; i++){
-            let number = parseInt(pokemon[i]["id"]);
-
-            await getPokemonFromApi(number);
-            generateHtmlPokemonCard(number);
-            setPokemonCardMainData(number);
-            generatePokemonCardTypes(number);
+            if(!name.includes(input) && !id.includes(input)){
+                document.getElementById(`pokemonCard${i + 1}`).style.display = 'none';       
+            } 
+            else{document.getElementById(`pokemonCard${i + 1}`).style.display = 'flex'; }
         }
-        document.getElementById("buttonLoadMore").style.display = "none";
-    }
-    else{
-        init();
-    }
-    
-    showLoadingSpinner(false);
 }
+
+
 
 async function fillPokemonArray(){
     

@@ -1,9 +1,9 @@
 header{
     color: yellow;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
     padding: 2px 16px;
     background-color: rgba( 227, 227, 227, 0.3);
     height: 120px;
@@ -12,6 +12,14 @@ header{
 
 .headerContainer{
     width: 100%;
+}
+
+.headerTextAndInput{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    height: 100%;
 }
 
 .headerInput{
@@ -25,7 +33,6 @@ header{
 
 .headerInput:not(:focus, :hover){
     text-align: center;
-    width: 25%;
     outline: none;
     border: 2px solid transparent;
     background-color: rgba(255, 255, 255, 0.5);
@@ -57,7 +64,7 @@ body{
     margin: 0;
     color: white !important;
     text-align: center;
-    background-image: url(img/main.jpg);
+    background-image: url(/img/main.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -68,6 +75,8 @@ body{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px 0px 16px 0px;
 }
 
 .pokemonCard{
@@ -76,7 +85,6 @@ body{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin: 16px;
     width: 260px;
     border: 2px solid transparent;
     z-index: 1;
