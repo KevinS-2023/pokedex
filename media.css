@@ -1,0 +1,45 @@
+@media(max-width: 640px){
+
+    .pokemonDataCard{
+        padding-top: 12px;
+        width: 100%;
+    }
+
+    .dataCardTop{
+        padding: 16px 8px 0px 8px;
+    }
+    
+    .dataCardBottom{
+        padding: 32px 8px;
+        width: 100%;
+    }
+
+    .dataCardBottomContent{
+        width: 95%;
+    }
+
+    #headerInput{
+        display: none;
+    }
+
+    #headerInputMobile{
+        display: block;
+    }
+
+    .headerInputMobile{
+       background-color: white;
+       border: 2px solid black;
+       text-align: center;
+       width: 60%;
+       border-radius: 8px;
+    }
+
+    .headerInputMobile:not(:focus, :hover){
+        width: 60%;
+        border-radius: 8px;
+        border: none;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.5);
+        border: 2px solid transparent;
+    }
+}
