@@ -64,11 +64,13 @@ body{
     margin: 0;
     color: white !important;
     text-align: center;
-    background-image: url(/img/main.jpg);
+    background-image: url(../img/main.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .contentContainer{

@@ -6,7 +6,7 @@ let loadFrom = 32;
 let loadTo = 62;
 let showlikes = false;
 let pokemonData = [];
-
+let totalPokemonCards = 30;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('headerInput').addEventListener('input', searchPokemon);
@@ -240,11 +240,14 @@ function givePokemonLike(){
 //  Loading Spinner ---------------------------------------------------------------------------------------
 
 function showLoadingSpinner(trueFalse){
+    element = document.getElementById('body');
     if(trueFalse == true){
         document.getElementById("spinnerContainer").style.display = 'flex';
+        element.style.overflow = 'hidden';
     }
     else{
         document.getElementById("spinnerContainer").style.display = 'none';
+        element.style.overflow = 'scroll';
     }
 }
 
@@ -253,10 +256,10 @@ function showLoadingSpinner(trueFalse){
 function searchPokemon(){
     let input = document.getElementById('headerInput').value.toLowerCase();
     
-        for(let i = 0; i < pokemon.length; i++){
+        for(let i = 0; i < totalPokemonCards; i++){
             let name = pokemon[i]['name'].toLowerCase();
             let id = pokemon[i]['id'].toString();
-
+            
             if(!name.includes(input) && !id.includes(input)){
                 document.getElementById(`pokemonCard${i + 1}`).style.display = 'none';       
             } 
