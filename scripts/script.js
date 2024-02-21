@@ -62,32 +62,21 @@ function capitalizeFirstLetter(string) {
 }
 
 function returnPokemonId(number){
-    if(number < 10){
-        return `#00${number}`;
-    }
-    else if (number < 100){
-        return `#0${number}`;
-    }
-    else{
-        return `#${number}`;
-    }
+    return number < 10 ? `#00${number}` : number < 100 ? `#0${number}` : `#${number}`;
 }
 
 function pushNameAndId(pokemonName, pokemonId){
-        pokemon.push({name : pokemonName, id : pokemonId});
-    
+    pokemon.push({name : pokemonName, id : pokemonId});
 }
 
 // Set Functions --------------------------------------------------------------------------------------------------------
 
 function setPokemonCardMainData(index){
     let name = capitalizeFirstLetter(pokemonData[0]['name']);
-    let number = pokemonData[0]['id'];
 
     document.getElementById(`name${index}`).innerHTML = name;
     document.getElementById(`number${index}`).innerHTML = returnPokemonId(pokemonData[0]['id']);
     document.getElementById(`img${index}`).src = pokemonData[0]['sprites']['other']['official-artwork']['front_default'];
-    // pushNameAndId(name, number);
 }
 
 function setDataCardMainData(){
@@ -107,12 +96,9 @@ function setDataAbout(){
 }
 
 function setDataCardLikeButton(){
-    if(likes.includes(numberOfIndex)){
-        document.getElementById("likeImageDataCard").src = "./icons/heart-red.svg";
-    }
-    else{
-        document.getElementById("likeImageDataCard").src = "./icons/iconizer-heart.svg";
-    }
+    const ELEMENT = document.getElementById('likeImageDataCard');
+
+    ELEMENT.src = likes.includes(numberOfIndex) ? "./icons/heart-red.svg" : "./icons/iconizer-heart.svg"
 }
 
 
@@ -243,11 +229,11 @@ function showLoadingSpinner(trueFalse){
     element = document.getElementById('body');
     if(trueFalse == true){
         document.getElementById("spinnerContainer").style.display = 'flex';
-        element.style.overflow = 'hidden';
+        element.style.overflowY = 'hidden'; 
     }
     else{
         document.getElementById("spinnerContainer").style.display = 'none';
-        element.style.overflow = 'scroll';
+        element.style.overflowY = 'scroll';
     }
 }
 
